@@ -44,8 +44,7 @@ public class ProdutoDAO {
     }
 
     public List<Produto> buscarTodosPorNomeDaCategoria(String nome){
-        String jpql = "SELECT p FROM Produto p WHERE p.categoria.nome = :nome"; //p.nome.categoria = atributo do relacionamento
-        return em.createQuery(jpql,Produto.class)
+        return em.createNamedQuery("Produto.produtosPorCategoria",Produto.class)
                 .setParameter("nome", nome) //passando o parametro da query
                 .getResultList();//Java Persistence Query Language
     }
